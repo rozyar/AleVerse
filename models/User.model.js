@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose")
 
 const UserSchema = new Schema({
   name: { type: String, required: true, trim: true },
@@ -10,12 +11,15 @@ const UserSchema = new Schema({
     lowercase: true,
   },
   passwordHash: { type: String, required: true },
+  nfts: [{type: mongoose.Types.ObjectId, ref: "NFT"}],
   role: {
     type: String,
     enum: ["ADMIN", "USER"],
     required: true,
     default: "USER",
-  },
+  }, 
+
+
 });
 
 const UserModel = model("User", UserSchema);
