@@ -17,6 +17,9 @@ app.use("/api", userRouter);
 const nftRouter = require("./routes/nft.routes");
 app.use("/api/create", nftRouter);
 
+const uploadRouter = require("./routes/uploadImages.routes")
+app.use("/api/upload", uploadRouter)
+
 app.listen(Number(process.env.PORT), () =>
   console.log(`Server up and running at port ${process.env.PORT}`)
 );
